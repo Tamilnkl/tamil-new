@@ -1,0 +1,64 @@
+<%= form_tag('/admin/login/verify_login') %>
+<table>
+    <tr>
+        <td colspan="2">
+            <div class="flash_notice">
+                <%= flash[:notice] if flash[:notice]!= nil %>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2">
+            <div class="login_heading">
+                Login
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <label for="login_email">
+                Email address:
+            </label>
+        </td>
+        <td>
+            <%= text_field :login, :email,:size=>"25",:class=>'login_field' %>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <label for="login_password">
+                Password:
+            </label>
+        </td>
+        <td>
+            <%= password_field :login, :password,:size=>"25",:class=>'login_field' %>
+        </td>
+    </tr>
+</table>
+
+
+<div style='margin-left: 105px; font-size: 11px;'>
+	<%= check_box_tag 'remember_me', '1', true %>  <b>Remember me</b>
+</div>
+
+<div class="common_button_parent">
+    <div class="adminButton">
+        <input type="submit" value="Sign in" name="commit"/>
+    </div>
+</div>
+
+<div class="common_button_parent">
+    <div class="forgot_password" style="margin-top:20px;width:360px;">
+    	<p> New user? Forgotten password? Password expired? </p>
+        <!--a href="javascript:void(0);" onclick="window.open('/admin/login/forgot_password','mywindow','width=700,height=300');">Click here to (re)set Password</a-->
+                <!--%=link_to "Click here to (re)set Password",:controller=>"/admin/login",:action=>'forgot_password'%-->
+        <a rel=1 href="/admin/login/forgot_password" class="newWindow">Click here to (re)set Password</a>
+    </div>
+    <div class="forgot_password" style="margin-top:20px;">
+    Login problems? <a href="http://www.incisivehelpdesk.com">www.incisivehelpdesk.com</a>
+    </div>
+</div>
+
+  <script type="text/javascript">
+	document.getElementById('login_email').focus();  
+  </script>	

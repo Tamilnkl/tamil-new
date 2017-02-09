@@ -1,0 +1,25 @@
+<h1>Listing Invoice</h1>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Phone</th>
+  </tr>
+  <% @invoice.each do |article| %>
+    <tr>
+      <td><%= article.name %></td>
+       <td><%= article.phone %></td>
+      <td><%= link_to 'Show', article %></td>
+      <td><%= link_to 'Edit', edit_invoice_path(article) %></td>
+      <td><%= link_to 'Destroy', article, confirm: 'Are you sure?', method: :delete %></td>
+    </tr>
+  <% end %>
+</table>
+<%= link_to 'New login', new_invoice_path%>
+
+<style>
+td, th {
+    padding: 5px;
+}
+</style>
+
+      

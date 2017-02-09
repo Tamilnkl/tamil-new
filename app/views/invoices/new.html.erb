@@ -1,0 +1,55 @@
+<%= form_for(@invoice) do |f| %>
+  <p>
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </p>
+ 
+  <p>
+    <%= f.label :phone %><br>
+    <%= f.text_field :phone %>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
+
+<%@product=Product.all%>
+<div class="product">
+<%= select_tag("Select",options_from_collection_for_select(@product,"id","title",:class=>"products"))%>
+<div class="product-add">
+	
+</div>
+</div>
+
+
+
+<script type="text/javascript">
+      $(".product").on('change',function() {
+        $.ajax({
+          type : 'POST',
+          url : '/product_regenerate_price',
+          data: {
+
+             product_id : $("#Select").val(),
+            },
+          dataType : 'json',
+          success : function(data) {
+           console.log(data.id);  
+           var dataid=data.id;
+           var getid=$(".product-add input").val();
+           console.log(getid);
+           //if(){
+           $('.product-add').append('<input type="text" value="'+data.id+'">','<input type="text" value="'+data.price+'"> <br>');
+           //}    
+          },
+        });     
+      
+      });
+      </script>
+      <!--<script>
+      $('.btn-primary').on('click', function(){
+    alert($(this).find('input').attr('id'));
+}); 
+
+      </script>-->
+

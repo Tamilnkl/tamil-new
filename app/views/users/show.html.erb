@@ -1,0 +1,13 @@
+<p>
+	<strong>Name:</strong>
+	<%= @user.name%>
+</p>
+
+<p>
+	<strong>Eamil:</strong>
+	<%= @user.email %>
+</p>
+<%= link_to 'New login', new_user_path%>
+<td> <%= link_to 'Show', @user %></td>
+<td><%= link_to 'Edit', edit_user_path(@user) %></td>
+<td><%= link_to 'Destroy', @user, confirm: 'Are you sure?', method: :delete %></td>

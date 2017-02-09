@@ -1,0 +1,9 @@
+
+
+<h2>Import Translation</h2>
+<%=flash[:notice]%>
+<%= form_tag "/admin/translations/upload", multipart: true do %>
+  <%= file_field_tag :file %>
+  <%= submit_tag "Import" %>
+<% end %>
+
